@@ -25,25 +25,40 @@ function getData(event) {
 			})
 			.then((res) => {
 				console.log('success', res);
-				let crimeName = [];
-				for (i = 0; i < res.length; i++) {
-					crimeName.push(res[i].descriptor);
-				}
 				ulEl.innerHTML = '';
-				crimeName.forEach((crime) => {
+				res.forEach((crime) => {
 					const newLi = document.createElement('li');
 					newLi.setAttribute('class', 'policeActionLi');
 					const newBtn = document.createElement('button');
 					newBtn.setAttribute('class', 'policeActionBtn');
+					newBtn.setAttribute('id', crime.unique_key);
 					const newSpan = document.createElement('span');
-					newSpan.innerText = crime;
+					const newDiv = document.createElement('div');
+					newSpan.innerText = crime.descriptor;
+					newDiv.innerText = crime.resolution_description;
+					newDiv.setAttribute('class', 'displayResolution hide');
 					newLi.appendChild(newSpan);
 					newBtn.innerText = 'What did the police do?';
 					newLi.appendChild(newBtn);
 					ulEl.appendChild(newLi);
+					newLi.appendChild(newDiv);
 				});
 			});
 	}
 }
+
+function displayResponse(event) {
+	event.preventDefault;
+	if (event.target.tagName == 'BUTTON') {
+		const crimeGrp = event.target.closest('.policeActionLi');
+		const resolutionDisplayDiv = crimeGrp.lastChild;
+		if (resolutionDisplayDiv.classList.contains('hide')) {
+			resolutionDisplayDiv.classList.remove('hide');
+		} else {
+			resolutionDisplayDiv.classList.add('hide');
+		}
+	}
+}
 //add event listener
 formEl.addEventListener('click', getData);
+resultsEl.addEventListener('click', displayResponse);

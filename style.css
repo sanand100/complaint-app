@@ -1,3 +1,64 @@
 body{
     /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+main{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+form{
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+}
+
+.policeActionLi{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    font-weight: 600;
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+.displayResolution{
+    width: 100%;
+    font-weight: 100;
+}
+
+.hide{
+    display: none;
+}
+
+.results{
+    width: 50%;
+    font-size: 1em;
+}
+
+.displayResolution{
+    width: 60%;
+    margin-right: 37%;
+    margin-left: 3%;
+}
+
+.policeActionBtn{
+    background-color: rgb(185, 0, 0);
+    color: white;
+    font-size: 1em;
+    padding: 5px 5px;
+    border-radius: 25px;
+    border-color: rgb(185, 0, 0);
+    
+}
+
+.policeActionBtn:hover{
+    background-color: rgb(255, 195, 57);
 }
